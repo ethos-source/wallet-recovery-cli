@@ -1,0 +1,23 @@
+{
+  "name": "wallet-recovery-cli",
+  "version": "1.0.0",
+  "description": "Generates a recovery transaction for assets held in the Ethos Universal Wallet. ",
+  "bin": "index.js",
+  "scripts": {
+    "pkg": "pkg . --out-path releases/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Simmons",
+  "license": "ISC",
+  "pkg": {
+    "targets": [
+      "node10-linux",
+      "node10-macos",
+      "node10-win"
+    ],
+    "out-path": "releases"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.9"
+  }
+}
