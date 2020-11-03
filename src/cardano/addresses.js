@@ -8,6 +8,7 @@ function getAddressObject(addrStr, convertToWasm) {
       value: addrStr,
       toString: () => addrStr,
       toWasmObject: () => wasmObject,
+      toWasmBase: () => ('to_address' in wasmObject) ? wasmObject.to_address() : wasmObject,
     };
   } catch (e) {
     return undefined;

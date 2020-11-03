@@ -92,7 +92,7 @@ class CardanoTransaction {
   _setOutputAmount(amount) {
     if (!this.destAddr) throw new Error('Destination address not set');
     const amtBigNum = BigNum.from_str(amount);
-    const address = this.destAddr.toWasmObject().to_address();
+    const address = this.destAddr.toWasmBase();
     const txOutput = TransactionOutput.new(address, amtBigNum);
     this.tx.add_output(txOutput);
   }
@@ -133,7 +133,7 @@ class CardanoTransaction {
     /* Build tx to compute size for fee calculation */
     const clone = this.clone();
     clone._setOutputAmount(MIN_UTXO_VALUE);
-    clone.tx.add_change_if_needed(this.senderAddr.toWasmObject().to_address());
+    clone.tx.add_change_if_needed(this.senderAddr.toWasmBase());
     const mockTx = clone.build();
     const sizeBytes = BigNum.from_str((mockTx.txBody.length / 2).toString());
     const varFee = BigNum.from_str(FEE_PER_BYTE).checked_mul(sizeBytes);
