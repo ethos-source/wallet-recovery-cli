@@ -2,7 +2,8 @@
   "name": "wallet-recovery-cli",
   "version": "1.0.0",
   "description": "Generates a recovery transaction for assets held in the Ethos Universal Wallet. ",
-  "bin": "index.js",
+  "type": "commonjs",
+  "bin": "src/index.js",
   "scripts": {
     "pkg": "pkg . --out-path releases/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,13 +12,20 @@
   "license": "ISC",
   "pkg": {
     "targets": [
-      "node10-linux",
-      "node10-macos",
-      "node10-win"
+      "node14-linux",
+      "node14-macos",
+      "node14-win"
     ],
     "out-path": "releases"
   },
   "devDependencies": {
-    "pkg": "^4.4.9"
+    "pkg": "4.4.9"
+  },
+  "dependencies": {
+    "@emurgo/cardano-serialization-lib-nodejs": "4.2.0",
+    "axios": "^0.21.0",
+    "bignumber.js": "^9.0.1",
+    "prompts": "^2.4.0",
+    "yargs": "^16.1.0"
   }
 }
