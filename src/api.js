@@ -1,6 +1,6 @@
 const axios = require('axios');
 const OPT_DEFAULTS = {
-  baseUrl: 'https://api.ethos.io/wallet-recovery',
+  baseURL: 'https://api.ethos.io/wallet-recovery',
 };
 module.exports = function (opts) {
   const _opts = {
