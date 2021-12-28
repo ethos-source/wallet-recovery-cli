@@ -39,7 +39,7 @@ class CardanoTransaction {
       BigNum.from_str('2000000'),
     );
 
-    this.tx.set_ttl(31536000);
+    this.tx.set_ttl(347059320);
   }
 
   async addInputs(fetchCb) {
