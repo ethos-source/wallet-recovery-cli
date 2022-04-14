@@ -77,10 +77,11 @@ const questions = [
 
 prompts.override(args);
 
-(async () => {
+async function runRecoveryTransaction() {
   const onSubmit = (_, __, answers) => {
     state.updateState(answers);
   };
+
   const response = await prompts(questions, { onSubmit });
 
   let details;
@@ -95,7 +96,23 @@ prompts.override(args);
     console.log(`Transaction hash: ${ details.txHash }`);
     console.log(`View at: https://explorer.cardano.org/en/transaction?id=${ details.txHash }`);
   }
-})();
+}
+
+(async () => {
+  while(1) {
+    await runRecoveryTransaction();
+    
+    const response = await prompts({
+      type: 'confirm',
+      name: 'processNext',
+      message: 'Operation complete. Do you want to send another transaction?',
+    });
+
+    if (!response.processNext) {
+      process.exit(0);
+    }
+  }
+})()
 
 
 
